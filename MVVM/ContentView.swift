@@ -10,13 +10,11 @@ import SwiftUI
 //Model
 struct Person {
     var name: String
-    var birthday: Date
 }
 
 //ViewModel
 class ViewModel: ObservableObject {
-   @Published private var person = Person(name: "홍길동", birthday: Date())
-    
+   @Published private var person = Person(name: "홍길동")
     
     var name: String {
         person.name
@@ -31,6 +29,7 @@ class ViewModel: ObservableObject {
         return birthDay
     }
 }
+
 //View
 struct ContentView: View {
     @StateObject var viewModel = ViewModel()
@@ -44,7 +43,6 @@ struct ContentView: View {
             .padding()
             
             Button(action: {
-                
             viewModel.changeName("김태희")
             }, label: {
                 Text("Change Name")
